@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "voting app for FCC with Node.js",
   "main": "server.js",
+  "engines": { "node": "7.8.0", 
+               "npm" : "4.2.0"},
   "dependencies": {
     "path": "^0.12.7"
   },
