@@ -1,0 +1,27 @@
+{
+  "name": "votingapp",
+  "version": "1.0.0",
+  "description": "voting app for FCC with Node.js",
+  "main": "server.js",
+  "dependencies": {
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatthiasLiszt/fccvotingappwithtwitter.git"
+  },
+  "keywords": [
+    "votingapp"
+  ],
+  "author": "Matthias Liszt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MatthiasLiszt/fccvotingappwithtwitter/issues"
+  },
+  "homepage": "https://github.com/MatthiasLiszt/fccvotingappwithtwitter#readme"
+}
