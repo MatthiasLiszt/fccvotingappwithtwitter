@@ -6,14 +6,33 @@
   "dependencies": {
     "path": "^0.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+   "express": "^4.13.3",
+   "mongodb": "^2.0.42",
+   "path": "^0.12.7",
+   "ejs": "~2.5.2",
+    "mongoose": "~4.6.1",
+    "passport": "~0.3.2",
+    "passport-local" : "~1.0.0",
+    "passport-facebook": "~2.1.1",
+    "passport-twitter": "~1.0.4",
+    "passport-google-oauth" : "~1.0.0",
+    "connect-flash": "~0.1.1",
+    "bcrypt-nodejs" : "latest",
+
+    "morgan": "~1.7.0",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "method-override": "~2.3.6",
+    "express-session": "~1.14.1"
+  },
   "scripts": {
     "test": "npm server.js",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MatthiasLiszt/fccvotingappwithtwitter.git"
+    "url": "git+https://github.com/MatthiasLiszt/fccvotingappwithtwitter.git"
   },
   "keywords": [
     "votingapp"
