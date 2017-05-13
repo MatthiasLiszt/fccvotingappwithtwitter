@@ -14,7 +14,7 @@ module.exports = {
     'twitterAuth' : {
         'consumerKey'        : process.env.TWITTER_CKEY,
         'consumerSecret'     : process.env.TWITTER_CSECRET,
-        'callbackURL'        : 'http://127.0.0.1:5000/auth/twitter/callback'
+        'callbackURL'        : process.env.CALLBACK
     },
 
     'googleAuth' : {
