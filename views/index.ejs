@@ -1,0 +1,31 @@
+<html>
+<title> voting app for fcc </title> 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="chaos.css">
+
+<body>
+<div id="logbuttons">
+<a href="/">Home</a>
+<a href="/mypolls">My Polls</a>
+<a href="/newpoll">New Poll</a>
+<% if(authenticated==false){ %>
+<a href="/login" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
+<% }else{ %>
+<a href="/logout">Log Out</a>
+<% } %>
+</div>
+<h1>voting app </h1>
+
+<tbody>
+<ul>
+<% for(var i = 0; i < list.length; i++) { %>
+<li><tr><td>
+<a href="/pdetail/<%-list[i] %>"><%=list[i]%></a></td></tr></li>
+<% } %>
+</ul>
+</tbody>
+
+</body>
+
+</html>

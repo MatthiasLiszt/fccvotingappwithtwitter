@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+    
+    <body>
+
+        <div class="container content">
+
+            <div class="jumbotron">
+                <h1>My Polls</h1>
+                 Welcome back, user <%= usign %> 
+                 <p><strong>Bellow are the polls you own</strong></p>
+           
+
+                    <tbody>
+                      <ul>
+                      <% for(var i = 0; i < list.length; i++) { %>
+                      <li><tr><td>
+                      <a href="/pdetail/<%-list[i] %>"><%=list[i]%></a></td></tr></li>
+                      <% } %>
+                      </ul>
+                      </tbody>
+               
+            </div>
+
+
+        </div>
+
+       
+    </body>
+</html>

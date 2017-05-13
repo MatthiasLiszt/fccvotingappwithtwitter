@@ -1,0 +1,110 @@
+var express = require ('express')
+var path = require('path')
+var app=express()
+var mongo = require('mongodb').MongoClient
+//var Flutter = require('flutter')
+var url = process.env.MONGOLAB_URI
+var Res
+var port = process.env.PORT || 5000
+var passport=require('passport')
+var TwitterStrategy=require('passport-twitter').Strategy
+
+/*
+var flutter = new Flutter({
+  cache: false ,
+  consumerKey: 'pR5MJ0SZEmtXUTSTPDxiqeu2r',
+  consumerSecret: '64grNRNL11E5tp8fny4ATHKVeGCeGrtq2qKtjzHuX9ocIrhTKn',
+  loginCallback: 'http://127.0.0.1:5000',
+  completeCallback: '/someUrl'
+})*/
+
+
+
+
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname + '/index.html'))
+})
+
+app.listen(process.env.PORT || port, function(err) {
+
+ if (err) {return console.log('something bad happened', err)}
+ console.log('server is listening on '+port)
+})
+
+/*
+app.post('/twitter',function(req,res){
+    res.send("not yet implemented but should be twitter")
+})
+*/
+
+passport.use(new TwitterStrategy({
+  consumerKey: 'pR5MJ0SZEmtXUTSTPDxiqeu2r',
+  consumerSecret: '64grNRNL11E5tp8fny4ATHKVeGCeGrtq2qKtjzHuX9ocIrhTKn',
+  callbackURL: 'http://localhost:5000'  
+  },
+  function(token, tokenSecret, profile, cb) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+app.get('/twitter/connect',
+  passport.authenticate('twitter'));
+
+app.get('/twitter/connect/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+function dbInsert(lts){
+   mongo.connect(url, function (err, db) {
+           if (err) { console.log('Unable to connect to the mongoDB server. Error:', err)   } 
+           else {    console.log('Connection established to', url)
+              var dbUrl=db.collection('last')
+              var value={"latest": lts }
+                            
+             
+              console.log("value = "+JSON.stringify(value))
+
+              // do some work here with the database.
+           
+             dbUrl.insert(value,
+             function(err, data) {
+                 if (err) { throw err }
+                  console.log(lts)
+                  
+                 db.close()
+             })
+           }  
+     }) 
+}
+
+function dbFind(){
+   mongo.connect(url, function (err, db) {
+           if (err) { console.log('Unable to connect to the mongoDB server. Error:', err)   } 
+           else {    console.log('Connection established to', url)
+                 var dbUrl=db.collection('last')
+                 var list=[]                 
+
+                 dbUrl.find()
+                 .toArray(function(err,dat){
+                 if(err) throw err 
+                 var i=dat.length-1
+                 var j=0
+                 while((i!=0)&&(j<10))
+                  {console.log("found "+dat[i].latest)
+                   list.push(dat[i].latest)
+                   --i
+                   ++j
+                  }   
+                 list.join()
+                 Res.send(list)
+                 db.close()
+                 })
+                } 
+   })
+
+}

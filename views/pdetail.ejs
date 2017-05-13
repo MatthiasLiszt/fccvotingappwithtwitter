@@ -1,0 +1,20 @@
+<html><body>
+<h1> poll details of " <%= id %> "</h1>
+authenticated: <%= authenticated %>
+
+<h2>content</h2>
+<tbody>
+<ul>
+<% for(var i = 0; i < qlength; i++) { %>
+<li><tr><td><%=options[i]%> votes: <%=votes[i]%></td></tr></li>
+<% } %>
+</ul>
+</tbody>
+<tbody>
+<% for(var i = 0; i < qlength; i++) { %>
+<tr><td> <a href="/vote/<%-id%>/<%-i%>"> <%=options[i]%> </a></td></tr>
+<% } %>
+</tbody>
+
+
+</body></html>
