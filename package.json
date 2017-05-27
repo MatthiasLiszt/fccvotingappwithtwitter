@@ -10,9 +10,7 @@
   "dependencies": {
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
+    "path": "^0.12.7",
     "express": "^4.13.3",
     "mongodb": "^2.0.42",
     "path": "^0.12.7",
@@ -31,6 +29,7 @@
     "method-override": "~2.3.6",
     "express-session": "~1.14.1"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "npm server.js",
     "start": "node server.js"
